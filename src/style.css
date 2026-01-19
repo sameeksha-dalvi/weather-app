@@ -2,3 +2,16 @@ body{
     background-image: linear-gradient( to bottom , #4DA0FF , #0056B3);
     height: 100vh;
 }
+
+.main-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#city-name,#get-weather-btn{
+    font-size: 22px;
+    padding: 5px;
+    border-radius: 8px;
+}
