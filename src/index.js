@@ -3,6 +3,11 @@ import "./style.css";
 
 const cityInput = document.querySelector('#city-name');
 const getWeatherBtn = document.querySelector('#get-weather-btn');
+const temp = document.querySelector('#temp');
+const humidity = document.querySelector('#humidity');
+const windspeed = document.querySelector('#windspeed');
+const conditions = document.querySelector('#conditions');
+const desc = document.querySelector('#desc');
 
 getWeatherBtn.addEventListener('click', function (e) {
     
@@ -13,11 +18,11 @@ getWeatherBtn.addEventListener('click', function (e) {
     }
 
     getWeatherData(cityInput.value).then((data) => {
-        console.log("desc  :" + data.getDesc());
-        console.log("temp  :" + data.getTemp());
-        console.log("humidity  :" + data.getHumidity());
-        console.log("windspeed  :" + data.getWindSpeed());
-        console.log("conditions  :" + data.getConditions());
+        temp.textContent = "Temp : "+data.getTemp();
+        humidity.textContent = "Humidity : "+ data.getHumidity();
+        windspeed.textContent = "Wind Speed : "+ data.getWindSpeed();
+        conditions.textContent = "Conditions : "+ data.getConditions();
+        desc.textContent = "Desc : "+ data.getDesc();
     });
 
     e.preventDefault();
