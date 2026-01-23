@@ -108,3 +108,43 @@ input:focus {
     background: var(--color-glass-bg-focus);
     border-color: var(--color-glass-border-focus);
 }
+
+.output-div {
+    width: 100%;
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--color-glass-bg-light);
+    border-radius: 10px;
+}
+
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    font-size: 15px;
+    color: var(--color-text-secondary);
+}
+
+#temp {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    justify-content: center;
+    text-align: center;
+}
+
+#humidity,
+#windspeed,
+#conditions {
+    font-size: 15px;
+}
+
+#desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+}

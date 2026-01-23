@@ -18,11 +18,11 @@ getWeatherBtn.addEventListener('click', function (e) {
     }
 
     getWeatherData(cityInput.value).then((data) => {
-        temp.textContent = "Temp : "+data.getTemp();
-        humidity.textContent = "Humidity : "+ data.getHumidity();
-        windspeed.textContent = "Wind Speed : "+ data.getWindSpeed();
-        conditions.textContent = "Conditions : "+ data.getConditions();
-        desc.textContent = "Desc : "+ data.getDesc();
+        temp.textContent = "Temp : "+`${data.getTemp()} °C`;
+        humidity.textContent = "Humidity : "+`${data.getHumidity()} %`;
+        windspeed.textContent = "Wind Speed : "+  `${data.getWindSpeed()} km/h`;
+        conditions.textContent = data.getConditions();
+        desc.textContent = data.getDesc();
     });
 
     e.preventDefault();
