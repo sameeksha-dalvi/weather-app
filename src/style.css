@@ -1,10 +1,39 @@
+@font-face {
+    font-family: 'Inter';
+    src: url('./Inter-Regular.woff2') format('woff2'),
+        url('./Inter-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --color-text-primary: #ffffff;
+    --color-text-secondary: rgba(255, 255, 255, 0.75);
+    --color-text-muted: rgba(255, 255, 255, 0.6);
+    --color-glass-bg: rgba(255, 255, 255, 0.25);
+    --color-glass-bg-light: rgba(255, 255, 255, 0.15);
+    --color-glass-bg-focus: rgba(255, 255, 255, 0.2);
+    --color-glass-border: rgba(255, 255, 255, 0.3);
+    --color-glass-border-focus: rgba(255, 255, 255, 0.6);
+    --color-button-bg: rgba(255, 255, 255, 0.25);
+    --color-button-hover: rgba(255, 255, 255, 0.35);
+    --color-bg-start: #4DA0FF;
+    --color-bg-end: #0056B3;
+    --color-shadow: rgba(0, 0, 0, 0.15);
+}
+
+
 body {
-    background-image: linear-gradient(to bottom, #4DA0FF, #0056B3);
+    background-image: linear-gradient(to bottom, var(--color-bg-start), var(--color-bg-end));
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    letter-spacing: 1px;
+    ;
 }
 
 .main-container {
@@ -12,18 +41,70 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 400px;
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(12px);
+    max-width: 450px;
     border-radius: 16px;
     padding: 30px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: var(--color-glass-bg);
+    border: 1px solid var(--color-glass-border);
+    box-shadow: 0 8px 32px var(--color-shadow);
+}
+
+.input-div>form {
+    display: flex;
+    gap: 20px;
+}
+
+
+.main-container>h1 {
+    font-size: 25px;
+    color: var(--color-text-primary);
 }
 
 #city-name,
 #get-weather-btn {
-    font-size: 22px;
-    padding: 5px;
-    border-radius: 8px;
+    color: var(--color-text-primary);
+    letter-spacing: 1px;
+}
+
+.info {
+    color: var(--color-text-secondary);
+}
+
+#get-weather-btn {
+    background-color: var(--color-button-bg);
+    border: 1px solid var(--color-button-hover);
+    width: 60%;
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#get-weather-btn:hover {
+    background-color: var(--color-button-hover);
+    transform: translateY(-1px);
+}
+
+input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    color: var(--text-primary);
+    background: var(--color-glass-bg-light);
+    border: 1px solid var(--color-glass-border);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+input::placeholder {
+    color: var(--color-text-muted);
+}
+
+input:focus {
+    background: var(--color-glass-bg-focus);
+    border-color: var(--color-glass-border-focus);
 }
