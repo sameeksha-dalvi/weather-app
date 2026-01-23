@@ -148,3 +148,33 @@ input:focus {
     line-height: 1.6;
     color: var(--color-text-secondary);
 }
+
+body.sunny {
+    background: linear-gradient(to bottom, #fceabb, #f8b500);
+    animation: sunShimmer 10s infinite alternate;
+    --color-text-primary: #333333;
+    --color-text-secondary: #333333;
+    --color-text-muted: #333333;
+}
+
+body.rainy {
+    background: linear-gradient(to bottom, #3a6073, #16222a);
+    position: relative;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: rgba(255, 255, 255, 0.75);
+    --color-text-muted: rgba(255, 255, 255, 0.6)
+}
+
+body.snowy {
+    background: linear-gradient(to bottom, #e0f7fa, #b2ebf2);
+    --color-text-primary: #333333;
+    --color-text-secondary: #333333;
+    --color-text-muted: #333333;
+}
+
+body.cloudy {
+    background: linear-gradient(to bottom, #d7d2cc, #304352);
+    --color-text-primary: #ffffff;
+    --color-text-secondary: rgba(255, 255, 255, 0.75);
+    --color-text-muted: rgba(255, 255, 255, 0.6)
+}
