@@ -1,16 +1,28 @@
-body{
-    background-image: linear-gradient( to bottom , #4DA0FF , #0056B3);
-    height: 100vh;
+body {
+    background-image: linear-gradient(to bottom, #4DA0FF, #0056B3);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.main-container{
+.main-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-#city-name,#get-weather-btn{
+#city-name,
+#get-weather-btn {
     font-size: 22px;
     padding: 5px;
     border-radius: 8px;
