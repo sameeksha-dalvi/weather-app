@@ -49,6 +49,8 @@ body {
     background: var(--color-glass-bg);
     border: 1px solid var(--color-glass-border);
     box-shadow: 0 8px 32px var(--color-shadow);
+    position: relative;
+    z-index: 1;
 }
 
 .input-div>form {
@@ -122,7 +124,7 @@ input:focus {
     padding: 10px;
 }
 
-.main-info{
+.main-info {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -176,7 +178,8 @@ body.rainy {
 }
 
 body.snowy {
-    background: linear-gradient(to bottom, #e0f7fa, #b2ebf2);
+    background: linear-gradient(to bottom, #ccebf6, #99d9e6);
+    ;
     --color-text-primary: #333333;
     --color-text-secondary: #333333;
     --color-text-muted: #333333;
@@ -214,3 +217,54 @@ body.clear {
 }
 
 
+#weather-effects {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+    background: rgba(0, 0, 0, 0.03);
+    /* subtle dark layer */
+}
+
+.snowflake {
+    position: absolute;       /* Important */
+    width: 6px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.9); /* pure white for visibility */
+    border-radius: 50%;
+    opacity: 0.8;
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
+    animation: snowFall linear infinite;
+}
+
+@keyframes snowFall {
+    0% {
+        transform: translateX(0px) translateY(-10px);
+    }
+    100% {
+        transform: translateX(20px) translateY(110vh); /* small horizontal drift */
+    }
+}
+
+
+.raindrop {
+    position: absolute;
+    width: 2px;
+    height: 15px;
+    background: rgba(255, 255, 255, 0.6);
+    animation: rainFall linear infinite;
+}
+
+@keyframes rainFall {
+    from {
+        transform: translateY(-20px);
+    }
+
+    to {
+        transform: translateY(110vh);
+    }
+}

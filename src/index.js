@@ -19,7 +19,7 @@ getWeatherBtn.addEventListener('click', function (e) {
     }
 
     getWeatherData(cityInput.value).then((data) => {
-        temp.textContent =`${data.getTemp()} °C`;
+        temp.textContent = `${data.getTemp()} °C`;
         humidity.textContent = "Humidity : " + `${data.getHumidity()} %`;
         windspeed.textContent = "Wind Speed : " + `${data.getWindSpeed()} km/h`;
         conditions.textContent = data.getConditions();
@@ -43,6 +43,15 @@ getWeatherBtn.addEventListener('click', function (e) {
             weatherIcon = "sunny";
         }
         setWeatherBackground(weatherIcon);
+        clearWeatherEffects();
+
+        if (weatherIcon === 'rain') {
+            createRainDrops();
+        }
+
+        if (weatherIcon === 'snow') {
+            createSnow();
+        }
         // const iconSrc = loadWeatherIcon(data.getIcon());
         // iconImg.src = iconSrc;
         loadWeatherIcon(data.getIcon()).then((svgMarkup) => {
@@ -122,4 +131,43 @@ async function loadWeatherIcon(iconName) {
     const icon = await import(`./assets/icons/${iconName}.svg`);
     const response = await fetch(icon.default);
     return response.text();
+}
+
+function createSnow(count = 40) {
+    const container = document.getElementById('weather-effects');
+    container.innerHTML = '';
+
+    for (let i = 0; i < count; i++) {
+        const snow = document.createElement('div');
+        snow.className = 'snowflake';
+        snow.style.left = Math.random() * window.innerWidth + 'px'; // full width
+        snow.style.width = snow.style.height = (4 + Math.random() * 6) + 'px'; // random size
+        snow.style.animationDuration = (3 + Math.random() * 5) + 's';
+        snow.style.opacity = 0.6 + Math.random() * 0.4;
+
+        // Optional: random horizontal drift using inline keyframe
+        const drift = (Math.random() - 0.5) * 30; // -15px to +15px drift
+        snow.style.animationName = `snowFall`;
+        snow.style.setProperty('--drift', drift + 'px');
+
+        container.appendChild(snow);
+    }
+}
+
+function createRainDrops(count = 60) {
+  const container = document.getElementById('weather-effects');
+  container.innerHTML = '';
+
+  for (let i = 0; i < count; i++) {
+    const drop = document.createElement('div');
+    drop.className = 'raindrop';
+    drop.style.left = Math.random() * 100 + 'vw';
+    drop.style.animationDuration = (0.5 + Math.random()) + 's';
+    drop.style.opacity = Math.random();
+    container.appendChild(drop);
+  }
+}
+
+function clearWeatherEffects() {
+    document.querySelector('#weather-effects').innerHTML = '';
 }
