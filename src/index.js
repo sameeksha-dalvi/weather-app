@@ -8,6 +8,7 @@ const humidity = document.querySelector('#humidity');
 const windspeed = document.querySelector('#windspeed');
 const conditions = document.querySelector('#conditions');
 const desc = document.querySelector('#desc');
+const iconImg = document.querySelector("#weather-icon");
 
 getWeatherBtn.addEventListener('click', function (e) {
 
@@ -18,30 +19,36 @@ getWeatherBtn.addEventListener('click', function (e) {
     }
 
     getWeatherData(cityInput.value).then((data) => {
-        temp.textContent = "Temp : " + `${data.getTemp()} °C`;
+        temp.textContent =`${data.getTemp()} °C`;
         humidity.textContent = "Humidity : " + `${data.getHumidity()} %`;
         windspeed.textContent = "Wind Speed : " + `${data.getWindSpeed()} km/h`;
         conditions.textContent = data.getConditions();
-        desc.textContent = data.getDesc();
+        // desc.textContent = data.getDesc();
 
-        let weatherBg = "";
+        console.log("icon :" + data.getIcon());
+        let weatherIcon = "";
         if (data.getIcon().includes('cloudy')) {
-            weatherBg = "cloudy";
+            weatherIcon = "cloudy";
         }
 
         if (data.getIcon().includes('rain')) {
-            weatherBg = "rain";
+            weatherIcon = "rain";
         }
 
         if (data.getIcon().includes('snow')) {
-            weatherBg = "snow";
+            weatherIcon = "snow";
         }
 
         if (data.getIcon().includes('sunny')) {
-            weatherBg = "sunny";
+            weatherIcon = "sunny";
         }
-        setWeatherBackground(weatherBg);
-        
+        setWeatherBackground(weatherIcon);
+        // const iconSrc = loadWeatherIcon(data.getIcon());
+        // iconImg.src = iconSrc;
+        loadWeatherIcon(data.getIcon()).then((svgMarkup) => {
+            iconImg.innerHTML = svgMarkup;
+        });
+
     });
 
     e.preventDefault();
@@ -106,6 +113,13 @@ function setWeatherBackground(weather) {
             document.body.classList.add('cloudy');
             break;
         default:
-            document.body.classList.add('sunny');
+            document.body.classList.add('clear');
     }
+}
+
+
+async function loadWeatherIcon(iconName) {
+    const icon = await import(`./assets/icons/${iconName}.svg`);
+    const response = await fetch(icon.default);
+    return response.text();
 }
