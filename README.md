@@ -31,3 +31,7 @@ A simple JavaScript app that fetches and displays the current weather for any ci
 - How to create rain and snow animations using JavaScript and CSS
 - How to use CSS variables to change themes based on weather
 - How to organize JavaScript code to keep it clean and readable
+
+
+> **Note:** This project uses a public API key for demo purposes.  
+> For production applications, API keys should be stored securely on the server side.
