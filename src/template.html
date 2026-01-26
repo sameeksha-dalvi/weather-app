@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<div id="weather-effects"></div>
+    <div id="weather-effects"></div>
     <div class="main-container">
         <h1>Weather App</h1>
         <div class="input-div">
@@ -18,7 +18,11 @@
             </form>
 
         </div>
-        <div class="output-div">
+        <div id="loading" class="loading hidden">
+            Loading weather data...
+        </div>
+        <div class="output-div hidden">
+
             <div class="main-info">
                 <div id="weather-icon"></div>
                 <div class="info" id="temp"></div>

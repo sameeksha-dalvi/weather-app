@@ -187,9 +187,9 @@ body.snowy {
 
 body.cloudy {
     background: linear-gradient(to bottom, #d7d2cc, #304352);
-    --color-text-primary: #ffffff;
-    --color-text-secondary: rgba(255, 255, 255, 0.75);
-    --color-text-muted: rgba(255, 255, 255, 0.6)
+    --color-text-primary: #333333;
+    --color-text-secondary: #333333;
+    --color-text-muted: #333333;
 }
 
 body.clear {
@@ -206,12 +206,12 @@ body.clear {
 }
 
 body.sunny,
+body.cloudy,
 body.snowy {
     --color-icon: #333333;
 }
 
 body.rainy,
-body.cloudy,
 body.clear {
     --color-icon: #ffffff;
 }
@@ -267,4 +267,26 @@ body.clear {
     to {
         transform: translateY(110vh);
     }
+}
+
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.2rem;
+  z-index: 9999;
+}
+
+.hidden {
+  display: none;
 }
